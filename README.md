@@ -57,7 +57,7 @@
 | municipalities    | string     | null: false               |
 | address           | string     | null: false               |
 | building_num      | string     |                           |
-| telephone_num     | integer    | null: false               |
+| telephone_num     | string     | null: false               |
 | user              | references | null: false               |
 | order             | references | null: false               |
 
