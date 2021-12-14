@@ -52,7 +52,7 @@
 
 | column            | type       | options                   |
 | ----------------- | ---------- | ------------------------- |
-| post_code         | integer    | null: false               |
+| post_code         | string     | null: false               |
 | prefectures       | string     | null: false               |
 | municipalities    | string     | null: false               |
 | address           | string     | null: false               |
