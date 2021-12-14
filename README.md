@@ -30,7 +30,7 @@
 | shipping_area_id  | integer    | null: false               |
 | day_to_ship_id    | integer    | null: false               |
 | price             | integer    | null: false               |
-| user_id           | references | null: false               |
+| user              | references | null: false               |
 
 ### Association
 - belongs_to :user
@@ -40,8 +40,8 @@
 
 | column            | type       | options                   |
 | ----------------- | ---------- | ------------------------- |
-| user_id           | references | null: false               |
-| item_id           | references | null: false               |
+| user              | references | null: false               |
+| item              | references | null: false               |
 
 ### Association
 - belongs_to :user
@@ -58,8 +58,8 @@
 | address           | string     | null: false               |
 | building_num      | string     |                           |
 | telephone_num     | integer    | null: false               |
-| user_id           | references | null: false               |
-| order_id          | references | null: false               |
+| user              | references | null: false               |
+| order             | references | null: false               |
 
 ### Association
 - belongs_to :user
