@@ -53,7 +53,7 @@
 | column            | type       | options                   |
 | ----------------- | ---------- | ------------------------- |
 | post_code         | string     | null: false               |
-| prefectures       | string     | null: false               |
+| prefectures_id    | integer    | null: false               |
 | municipalities    | string     | null: false               |
 | address           | string     | null: false               |
 | building_num      | string     |                           |
