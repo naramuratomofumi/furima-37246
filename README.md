@@ -16,7 +16,6 @@
 ### Association
 - has_many :items
 - has_many :orders
-- has_one :address
 
 ## items テーブル
 
@@ -58,9 +57,7 @@
 | address           | string     | null: false               |
 | building_num      | string     |                           |
 | telephone_num     | string     | null: false               |
-| user              | references | null: false               |
 | order             | references | null: false               |
 
 ### Association
-- belongs_to :user
 - belongs_to :order
