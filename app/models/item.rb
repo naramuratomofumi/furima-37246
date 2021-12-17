@@ -2,6 +2,7 @@ class Item < ApplicationRecord
   belongs_to :user
   belongs_to :category
   belongs_to :sales_status
+  belongs_to :shipping_cost
   has_one_attached :image
   
 
@@ -9,7 +10,7 @@ class Item < ApplicationRecord
   validates :item_text, presence: true
   validates :category_id, numericality: { other_than: 1 , message: "can't be blank"}
   validates :sales_status_id, presence: true { other_than: 1 , message: "can't be blank"}
-  validates :shipping_cost_id, presence: true
+  validates :shipping_cost_id, presence: true { other_than: 1 , message: "can't be blank"}
   validates :shipping_area_id, presence: true
   validates :day_to_ship_id, presence: true
   validates :price, presence: true
