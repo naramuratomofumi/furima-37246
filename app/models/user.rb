@@ -11,5 +11,5 @@ class User < ApplicationRecord
   validates :date_of_birth, presence: true
   validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i }
 
-  
+  has_many :items
 end
