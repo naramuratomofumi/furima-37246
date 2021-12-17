@@ -9,7 +9,7 @@ class CreateItems < ActiveRecord::Migration[6.0]
       t.integer    :shipping_area_id,   null: false
       t.integer    :day_to_ship_id,     null: false
       t.integer    :price,              null: false
-      t.references :usesr,              null: false
+      t.references :user,              null: false
       t.timestamps
     end
   end
