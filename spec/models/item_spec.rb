@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Item, type: :model do
-
   before do
     @item = FactoryBot.build(:item)
   end
@@ -60,57 +59,56 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include "Image can't be blank"
       end
 
-      it "priceが全角英字では登録できない" do
+      it 'priceが全角英字では登録できない' do
         @item.price = 'ａａａＡＡＡ'
         @item.valid?
-        expect(@item.errors.full_messages).to include "Price is invalid. Input half-width characters"
+        expect(@item.errors.full_messages).to include 'Price is invalid. Input half-width characters'
       end
-      it "priceが全角数字では登録できない" do
+      it 'priceが全角数字では登録できない' do
         @item.price = '１２３４５６７８９０'
         @item.valid?
-        expect(@item.errors.full_messages).to include "Price is invalid. Input half-width characters"
+        expect(@item.errors.full_messages).to include 'Price is invalid. Input half-width characters'
       end
-      it "priceが全角漢字では登録できない" do
+      it 'priceが全角漢字では登録できない' do
         @item.price = '一二三四五六七八九十'
         @item.valid?
-        expect(@item.errors.full_messages).to include "Price is invalid. Input half-width characters"
+        expect(@item.errors.full_messages).to include 'Price is invalid. Input half-width characters'
       end
-      it "priceが全角ひらがなでは登録できない" do
+      it 'priceが全角ひらがなでは登録できない' do
         @item.price = 'いちにさんよんごろくななはちきゅう'
         @item.valid?
-        expect(@item.errors.full_messages).to include "Price is invalid. Input half-width characters"
+        expect(@item.errors.full_messages).to include 'Price is invalid. Input half-width characters'
       end
-      it "priceが半角英字では登録できない" do
+      it 'priceが半角英字では登録できない' do
         @item.price = 'aaaAAA'
         @item.valid?
-        expect(@item.errors.full_messages).to include "Price is invalid. Input half-width characters"
+        expect(@item.errors.full_messages).to include 'Price is invalid. Input half-width characters'
       end
-      it "priceが半角カタカナでは登録できない" do
+      it 'priceが半角カタカナでは登録できない' do
         @item.price = 'ｲﾁﾆｻﾝｼｺﾞﾛｸﾅﾅﾊﾁｷｭｳ'
         @item.valid?
-        expect(@item.errors.full_messages).to include "Price is invalid. Input half-width characters"
+        expect(@item.errors.full_messages).to include 'Price is invalid. Input half-width characters'
       end
-      it "priceが300円より小さい場合、登録できない" do
+      it 'priceが300円より小さい場合、登録できない' do
         @item.price = '299'
         @item.valid?
-        expect(@item.errors.full_messages).to include "Price Out of setting range"
+        expect(@item.errors.full_messages).to include 'Price Out of setting range'
       end
-      it "priceが9,999,999円より大きい場合、登録できない" do
+      it 'priceが9,999,999円より大きい場合、登録できない' do
         @item.price = '10000000'
         @item.valid?
-        expect(@item.errors.full_messages).to include "Price Out of setting range"
+        expect(@item.errors.full_messages).to include 'Price Out of setting range'
       end
-      it "priceがマイナスの場合、登録できない" do
+      it 'priceがマイナスの場合、登録できない' do
         @item.price = '-1000'
         @item.valid?
-        expect(@item.errors.full_messages).to include "Price Out of setting range"
+        expect(@item.errors.full_messages).to include 'Price Out of setting range'
       end
 
-      it "userと紐付いていないと登録できない"do
+      it 'userと紐付いていないと登録できない' do
         @item.user = nil
         @item.valid?
-        binding.pry
-        expect(@item.errors.full_messages).to include "User must exist"
+        expect(@item.errors.full_messages).to include 'User must exist'
       end
     end
   end
