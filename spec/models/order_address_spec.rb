@@ -62,6 +62,41 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include 'Telephone num is too short.'
       end
+      it 'telephone_numが12桁以上だと登録できない' do
+        @order_address.telephone_num = '123456789012'
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include 'Telephone num is too short.'
+      end
+      it 'telephone_numに半角英語が含まれている場合は登録できない' do
+        @order_address.telephone_num = 'TellPhone'
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include 'Telephone num is invalid. Input only number.'
+      end
+      it 'telephone_numに半角カナが含まれている場合は登録できない' do
+        @order_address.telephone_num = 'ﾃﾞﾝﾜﾊﾞﾝｺﾞｳ'
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include 'Telephone num is invalid. Input only number.'
+      end
+      it 'telephone_numに全角数字が含まれている場合は登録できない' do
+        @order_address.telephone_num = '０９０１２３４５６７８'
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include 'Telephone num is invalid. Input only number.'
+      end
+      it 'telephone_numに全角カナが含まれている場合は登録できない' do
+        @order_address.telephone_num = 'デンワバンゴウ'
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include 'Telephone num is invalid. Input only number.'
+      end
+      it 'telephone_numにひらがなが含まれている場合は登録できない' do
+        @order_address.telephone_num = 'でんわばんごう'
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include 'Telephone num is invalid. Input only number.'
+      end
+      it 'telephone_numに漢字が含まれている場合は登録できない' do
+        @order_address.telephone_num = '電話番号'
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include 'Telephone num is invalid. Input only number.'
+      end
     end
   end
 end
