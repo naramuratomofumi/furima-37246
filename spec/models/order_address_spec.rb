@@ -50,17 +50,17 @@ RSpec.describe OrderAddress, type: :model do
       it 'post_codeに"-"がないと登録できない' do
         @order_address.post_code = '1234567'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include "Post code is invalid. Enter it as follows (e.g. 123-4567)"
+        expect(@order_address.errors.full_messages).to include 'Post code is invalid. Enter it as follows (e.g. 123-4567)'
       end
       it 'post_codeの3桁後に"-"ないと登録できない' do
         @order_address.post_code = '1234-567'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include "Post code is invalid. Enter it as follows (e.g. 123-4567)"
+        expect(@order_address.errors.full_messages).to include 'Post code is invalid. Enter it as follows (e.g. 123-4567)'
       end
       it 'telephone_numが9桁以下だと登録できない' do
         @order_address.telephone_num = '123456789'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include "Telephone num is too short."
+        expect(@order_address.errors.full_messages).to include 'Telephone num is too short.'
       end
     end
   end
