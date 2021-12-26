@@ -2,7 +2,10 @@ require 'rails_helper'
 
 RSpec.describe OrderAddress, type: :model do
   before do
-    @order_address = FactoryBot.build(:order_address)
+    item = FactoryBot.create(:item)
+    user = FactoryBot.create(:user)
+    @order_address = FactoryBot.build(:order_address, item_id: item.id, user_id: user.id)
+    sleep 1
   end
 
   describe '商品購入' do
@@ -60,42 +63,52 @@ RSpec.describe OrderAddress, type: :model do
       it 'telephone_numが9桁以下だと登録できない' do
         @order_address.telephone_num = '123456789'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include 'Telephone num is too short.'
+        expect(@order_address.errors.full_messages).to include 'Telephone num is too short'
       end
       it 'telephone_numが12桁以上だと登録できない' do
         @order_address.telephone_num = '123456789012'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include 'Telephone num is too short.'
+        expect(@order_address.errors.full_messages).to include 'Telephone num is too short'
       end
       it 'telephone_numに半角英語が含まれている場合は登録できない' do
         @order_address.telephone_num = 'TellPhone'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include 'Telephone num is invalid. Input only number.'
+        expect(@order_address.errors.full_messages).to include 'Telephone num is invalid. Input only number'
       end
       it 'telephone_numに半角カナが含まれている場合は登録できない' do
         @order_address.telephone_num = 'ﾃﾞﾝﾜﾊﾞﾝｺﾞｳ'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include 'Telephone num is invalid. Input only number.'
+        expect(@order_address.errors.full_messages).to include 'Telephone num is invalid. Input only number'
       end
       it 'telephone_numに全角数字が含まれている場合は登録できない' do
         @order_address.telephone_num = '０９０１２３４５６７８'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include 'Telephone num is invalid. Input only number.'
+        expect(@order_address.errors.full_messages).to include 'Telephone num is invalid. Input only number'
       end
       it 'telephone_numに全角カナが含まれている場合は登録できない' do
         @order_address.telephone_num = 'デンワバンゴウ'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include 'Telephone num is invalid. Input only number.'
+        expect(@order_address.errors.full_messages).to include 'Telephone num is invalid. Input only number'
       end
       it 'telephone_numにひらがなが含まれている場合は登録できない' do
         @order_address.telephone_num = 'でんわばんごう'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include 'Telephone num is invalid. Input only number.'
+        expect(@order_address.errors.full_messages).to include 'Telephone num is invalid. Input only number'
       end
       it 'telephone_numに漢字が含まれている場合は登録できない' do
         @order_address.telephone_num = '電話番号'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include 'Telephone num is invalid. Input only number.'
+        expect(@order_address.errors.full_messages).to include 'Telephone num is invalid. Input only number'
+      end
+      it 'user_idが空だと登録できない' do
+        @order_address.user_id = ''
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include "User can't be blank"
+      end
+      it 'item_idが空だと登録できない' do
+        @order_address.item_id = ''
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include "Item can't be blank"
       end
     end
   end
