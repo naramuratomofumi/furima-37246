@@ -6,7 +6,8 @@ class OrderAddress
     validates :post_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'is invalid. Enter it as follows (e.g. 123-4567)' }
     validates :municipalities
     validates :address
-    validates :telephone_num, format: { with: /\A\d{10}\z|\A\d{11}\z/, message: 'is too short' }, numericality: { only_integer: true, message: 'is invalid. Input only number' }
+    validates :telephone_num, format: { with: /\A\d{10}\z|\A\d{11}\z/, message: 'is too short' },
+                              numericality: { only_integer: true, message: 'is invalid. Input only number' }
     validates :token
     validates :user_id
     validates :item_id
