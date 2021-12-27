@@ -16,47 +16,47 @@ RSpec.describe Item, type: :model do
       it 'item_nameが空だと登録できない' do
         @item.item_name = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include "商品名を入力してください"
+        expect(@item.errors.full_messages).to include '商品名を入力してください'
       end
       it 'item_textが空だと登録できない' do
         @item.item_text = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include "商品の説明を入力してください"
+        expect(@item.errors.full_messages).to include '商品の説明を入力してください'
       end
       it 'category_idが1(---)だと登録できない' do
         @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include "カテゴリーが選択されていません"
+        expect(@item.errors.full_messages).to include 'カテゴリーが選択されていません'
       end
       it 'sales_status_idが1(---)だと登録できない' do
         @item.sales_status_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include "商品の状態が選択されていません"
+        expect(@item.errors.full_messages).to include '商品の状態が選択されていません'
       end
       it 'shipping_cost_idが1(---)だと登録できない' do
         @item.shipping_cost_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include "配送料の負担が選択されていません"
+        expect(@item.errors.full_messages).to include '配送料の負担が選択されていません'
       end
       it 'shipping_area_idが1(---)だと登録できない' do
         @item.shipping_area_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include "配送元の地域が選択されていません"
+        expect(@item.errors.full_messages).to include '配送元の地域が選択されていません'
       end
       it 'day_to_ship_idが1(---)だと登録できない' do
         @item.day_to_ship_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include "発送までの日数が選択されていません"
+        expect(@item.errors.full_messages).to include '発送までの日数が選択されていません'
       end
       it 'priceが空だと登録できない' do
         @item.price = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include "販売価格を入力してください"
+        expect(@item.errors.full_messages).to include '販売価格を入力してください'
       end
       it 'imageが空だと登録できない' do
         @item.image = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include "商品画像を入力してください"
+        expect(@item.errors.full_messages).to include '商品画像を入力してください'
       end
 
       it 'priceが全角英字では登録できない' do

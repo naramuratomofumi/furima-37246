@@ -13,7 +13,7 @@ class OrderAddress
     validates :item_id
   end
 
-  validates :prefectures_id, numericality: { other_than: 1, message: "が選択されていません" }
+  validates :prefectures_id, numericality: { other_than: 1, message: 'が選択されていません' }
 
   def save
     order = Order.create(user_id: user_id, item_id: item_id)

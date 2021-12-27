@@ -23,32 +23,32 @@ RSpec.describe OrderAddress, type: :model do
       it 'post_codeが空だと登録できない' do
         @order_address.post_code = ''
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include "郵便番号を入力してください"
+        expect(@order_address.errors.full_messages).to include '郵便番号を入力してください'
       end
       it 'prefectures_idが"---"(1)だと登録できない' do
         @order_address.prefectures_id = '1'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include "都道府県が選択されていません"
+        expect(@order_address.errors.full_messages).to include '都道府県が選択されていません'
       end
       it 'municipalitiesが空だと登録できない' do
         @order_address.municipalities = ''
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include "市区町村を入力してください"
+        expect(@order_address.errors.full_messages).to include '市区町村を入力してください'
       end
       it 'addressが空だと登録できない' do
         @order_address.address = ''
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include "番地を入力してください"
+        expect(@order_address.errors.full_messages).to include '番地を入力してください'
       end
       it 'telephone_numが空だと登録できない' do
         @order_address.telephone_num = ''
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include "電話番号を入力してください"
+        expect(@order_address.errors.full_messages).to include '電話番号を入力してください'
       end
       it 'tokenが空だと登録できない' do
         @order_address.token = nil
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include "カード情報を入力してください"
+        expect(@order_address.errors.full_messages).to include 'カード情報を入力してください'
       end
       it 'post_codeに"-"がないと登録できない' do
         @order_address.post_code = '1234567'
@@ -103,12 +103,12 @@ RSpec.describe OrderAddress, type: :model do
       it 'user_idが空だと登録できない' do
         @order_address.user_id = ''
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include "Userを入力してください"
+        expect(@order_address.errors.full_messages).to include 'Userを入力してください'
       end
       it 'item_idが空だと登録できない' do
         @order_address.item_id = ''
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include "Itemを入力してください"
+        expect(@order_address.errors.full_messages).to include 'Itemを入力してください'
       end
     end
   end
